@@ -3,7 +3,7 @@ export default function Logo() {
 
   return(
     <div>
-      <h4>Bilssfull Day </h4>
+      <h4>Blissfull Day </h4>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import Searchbar from "./searchbar";
 
 export default function Header() {
   return (
-    <div className="max-w-7xl m-auto border">
+    <div className="">
       <div className="">
         <div className="flex justify-between">
           <Logo />
