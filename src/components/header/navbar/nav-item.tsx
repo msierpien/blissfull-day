@@ -1,6 +1,14 @@
 import Link from 'next/link'
 
-const NavItem = ({ item }) => {
+type NavItemProps = {
+  item: {
+    name: string;
+    path: string;
+  };
+};
+
+
+const NavItem = ( { item }: NavItemProps) => {
   return (
     <li>
       <Link href={item.path}>
