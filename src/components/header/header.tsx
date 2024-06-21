@@ -1,5 +1,6 @@
 import Logo from "./logo";
-import Navbar from "./navbar";
+import Navbar from "./navbar/navbar";
+
 import Searchbar from "./searchbar";
 
 export default function Header() {

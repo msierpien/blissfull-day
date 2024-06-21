@@ -1,9 +1,12 @@
+import Link from 'next/link'
 
 export default function Logo() {
 
   return(
     <div>
-      <h4>Blissfull Day </h4>
+      <Link href="/">
+        Blissfull Day
+      </Link>
     </div>
   )
 }
