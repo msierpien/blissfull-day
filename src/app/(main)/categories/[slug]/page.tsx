@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { type ResolvingMetadata, type Metadata } from "next";
 import { ProductListByCategoryDocument } from "@/gql/graphql";
 import { executeGraphQL } from "@/lib/graphql";
+import Image from "next/image";
 
 export const generateMetadata = async (
   { params }: { params: { slug: string } },
@@ -41,19 +42,22 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <h1 className="pb-8 text-xl font-semibold">{name}</h1>
       <div className="grid grid-cols-3">
         {products?.edges.map((product) => (
-          <div className="border m-2 p-2">
-            <div key={product.node.id}>
+          <div className="border m-2 p-2" key={product.node.id}>
+            <div >
               <h2>{product.node.name}</h2>
               <p>{product.node.category?.name}</p>
               <p>
                 {product.node.pricing?.priceRange?.start?.gross.amount}{" "}
                 {product.node.pricing?.priceRange?.start?.gross.currency}
               </p>
-							<img
-								src={product.node.thumbnail?.url}
-								// alt={product.thumbnail?.alt}
-								className="w-48 h-48 object-contain"
-							/>
+         
+              <Image
+                src={product.node.thumbnail?.url || "/no-image.png"} 
+                alt={product.node.thumbnail?.alt || ""}
+                width={500}
+                height={300}
+                
+              />
             </div>
           </div>
         ))}

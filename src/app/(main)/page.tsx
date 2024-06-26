@@ -1,6 +1,6 @@
 import { ProductListByCollectionDocument } from "@/gql/graphql";
 import { executeGraphQL } from "@/lib/graphql";
-
+import Image from "next/image";
 
 export const metadata = {
 	title: "Blissful E-commerce Starter Pack",
@@ -27,11 +27,13 @@ export default async function Page() {
 				{
 					products.map((product) => (
 						<div key={product.id} className="flex flex-col items-center">
-							<img
-								src={product.thumbnail?.url}
-								// alt={product.thumbnail?.alt}
-								className="w-48 h-48 object-contain"
-							/>
+						   <Image
+                src={product.thumbnail?.url || "/no-image.png"} 
+                alt={product.thumbnail?.alt || ""}
+                width={500}
+                height={300}
+                
+              />
 							<h3 className="text-lg font-semibold mt-4">{product.name}</h3>
 							<p className="text-sm text-gray-500 mt-2">{product.id}</p>
 							<p className="text-lg font-semibold mt-2">{product.pricing?.priceRange?.start?.gross.amount} {product.pricing?.priceRange?.start?.gross.currency}</p>
