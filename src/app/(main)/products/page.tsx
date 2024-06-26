@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { ProductListPaginatedDocument } from "@/gql/graphql";
 import { executeGraphQL, ProductsPerPage } from "@/lib/graphql";
-import Image from "next/image";
 
 type Props = {
 	searchParams: {

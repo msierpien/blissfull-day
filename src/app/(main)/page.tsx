@@ -1,6 +1,6 @@
-import { ProductListByCollectionDocument } from "@/gql/graphql";
-import { executeGraphQL } from "@/lib/graphql";
 import Image from "next/image";
+import { executeGraphQL } from "@/lib/graphql";
+import { ProductListByCollectionDocument } from "@/gql/graphql";
 
 export const metadata = {
 	title: "Blissful E-commerce Starter Pack",
