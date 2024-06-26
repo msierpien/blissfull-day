@@ -1,0 +1,9 @@
+query ProductList($first: Int = 9) {
+	products(first: $first, channel: "channel-pln") {
+		edges {
+			node {
+				...ProductListItem
+			}
+		}
+	}
+}
