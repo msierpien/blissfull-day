@@ -4,6 +4,7 @@ import { SaleorAuthProvider, useAuthChange } from "@saleor/auth-sdk/react";
 import { invariant } from "ts-invariant";
 import { createSaleorAuthClient } from "@saleor/auth-sdk";
 import { useState, type ReactNode } from "react";
+import "isomorphic-fetch";
 import {
 	type Client,
 	Provider as UrqlProvider,
@@ -25,7 +26,7 @@ const makeUrqlClient = () => {
 		url: saleorApiUrl,
 		suspense: true,
 		// requestPolicy: "cache-first",
-		fetch: (input, init) => saleorAuthClient.fetchWithAuth(input as NodeJS.fetch.RequestInfo, init),
+		fetch: (input, init) => saleorAuthClient.fetchWithAuth(input as RequestInfo, init),
 		exchanges: [dedupExchange, cacheExchange, fetchExchange],
 	});
 };

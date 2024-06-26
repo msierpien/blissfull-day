@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, type ReactNode } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 import { Logo } from "../../Logo";
 import { useMobileMenu } from "./useMobileMenu";
 import { OpenButton } from "./OpenButton";
@@ -19,20 +19,23 @@ export const MobileMenu = ({ children }: Props) => {
 			<OpenButton onClick={openMenu} aria-controls="mobile-menu" />
 			<Transition show={isOpen}>
 				<Dialog onClose={closeMenu}>
-					<Dialog.Panel className="fixed inset-0 z-20 flex h-[100dvh] w-screen flex-col overflow-y-scroll">
-						<Transition.Child
-							className="sticky top-0 z-10 flex h-16 shrink-0 bg-neutral-100/50 px-3 backdrop-blur-md sm:px-8"
+					<DialogPanel className="fixed inset-0 z-20 flex h-[100dvh] w-screen flex-col overflow-y-scroll">
+						<TransitionChild
+							
 							enter="motion-safe:transition-all motion-safe:duration-150"
 							enterFrom="bg-transparent"
-							enterTo="bg-neutral-100"
+							enterTo="bg-white"
 							leave="motion-safe:transition-all motion-safe:duration-150"
-							leaveFrom="bg-neutral-100"
+							leaveFrom="bg-white"
 							leaveTo="bg-transparent"
-						>
+							>
+							<div className="sticky top-0 z-10 flex h-16 shrink-0 bg-white px-3 backdrop-blur-md sm:px-8">
+
 							<Logo />
 							<CloseButton onClick={closeMenu} aria-controls="mobile-menu" />
-						</Transition.Child>
-						<Transition.Child
+							</div>
+						</TransitionChild>
+						<TransitionChild
 							as={Fragment}
 							enter="motion-safe:transition-all motion-safe:duration-150"
 							enterFrom="opacity-0 -translate-y-3 bg-transparent"
@@ -47,8 +50,8 @@ export const MobileMenu = ({ children }: Props) => {
 							>
 								{children}
 							</ul>
-						</Transition.Child>
-					</Dialog.Panel>
+						</TransitionChild>
+					</DialogPanel>
 				</Dialog>
 			</Transition>
 		</>
