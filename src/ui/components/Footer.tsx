@@ -11,7 +11,7 @@ export async function Footer() {
 
 	return (
 		<footer className="border-neutral-300 bg-neutral-50">
-			<div className="mx-auto max-w-7xl px-4 lg:px-8">
+			<div className="container mx-auto text-center">
 				<div className="grid grid-cols-3 gap-8 py-16">
 					{footerLinks.menu?.items?.map((item) => {
 						return (

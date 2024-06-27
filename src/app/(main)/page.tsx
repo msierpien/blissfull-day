@@ -22,7 +22,8 @@ export default async function Page() {
 
 	return (
 		<div>
-			<section className="mx-auto max-w-7xl p-8 pb-16">
+		
+			<section className="mx-auto max-w-7xl p-8 pb-16 grid  md:grid-cols-2 lg:grid-cols-4"  >
 				<h2 className="sr-only">Product list</h2>
 				{
 					products.map((product) => (
