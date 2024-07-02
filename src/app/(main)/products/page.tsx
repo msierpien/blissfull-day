@@ -27,7 +27,7 @@ export default async function Page({ searchParams }: Props) {
 
 			{
 				products?.edges.map((product) => (
-					<div className="border m-2 p-2" key={product.node.id}>
+					<div className=" m-2 p-2" key={product.node.id}>
 						<div >
 							<h2>{product.node.name}</h2>
 							<p>{product.node.category?.name}</p>

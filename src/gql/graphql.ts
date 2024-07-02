@@ -33130,6 +33130,14 @@ export type CurrentUserOrderListQueryVariables = Exact<{ [key: string]: never; }
 
 export type CurrentUserOrderListQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: string, email: string, firstName: string, lastName: string, orders?: { __typename?: 'OrderCountableConnection', edges: Array<{ __typename?: 'OrderCountableEdge', node: { __typename?: 'Order', id: string, number: string, created: string, total: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number, currency: string } }, lines: Array<{ __typename?: 'OrderLine', quantity: number, variant?: { __typename?: 'ProductVariant', id: string, name: string, product: { __typename?: 'Product', id: string, name: string, description?: string | null, slug: string, thumbnail?: { __typename?: 'Image', url: string, alt?: string | null } | null }, pricing?: { __typename?: 'VariantPricingInfo', price?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number, currency: string } } | null } | null } | null }> } }> } | null, avatar?: { __typename?: 'Image', url: string, alt?: string | null } | null } | null };
 
+export type HeroCategoriesQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+  firstSub?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type HeroCategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryCountableConnection', edges: Array<{ __typename?: 'CategoryCountableEdge', node: { __typename?: 'Category', name: string, id: string, children?: { __typename?: 'CategoryCountableConnection', edges: Array<{ __typename?: 'CategoryCountableEdge', node: { __typename?: 'Category', name: string, id: string, description?: string | null, backgroundImage?: { __typename?: 'Image', url: string } | null } }> } | null } }> } | null };
+
 export type MenuItemFragment = { __typename?: 'MenuItem', id: string, name: string, level: number, url?: string | null, category?: { __typename?: 'Category', id: string, slug: string, name: string } | null, collection?: { __typename?: 'Collection', id: string, name: string, slug: string } | null, page?: { __typename?: 'Page', id: string, title: string, slug: string } | null };
 
 export type MenuGetBySlugQueryVariables = Exact<{
@@ -33492,6 +33500,30 @@ export const CurrentUserOrderListDocument = new TypedDocumentString(`
     alt
   }
 }`) as unknown as TypedDocumentString<CurrentUserOrderListQuery, CurrentUserOrderListQueryVariables>;
+export const HeroCategoriesDocument = new TypedDocumentString(`
+    query HeroCategories($id: ID!, $firstSub: Int) {
+  categories(where: {ids: [$id]}, first: 1) {
+    edges {
+      node {
+        name
+        id
+        children(first: $firstSub) {
+          edges {
+            node {
+              name
+              backgroundImage {
+                url
+              }
+              id
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<HeroCategoriesQuery, HeroCategoriesQueryVariables>;
 export const MenuGetBySlugDocument = new TypedDocumentString(`
     query MenuGetBySlug($slug: String!) {
   menu(slug: $slug, channel: "channel-pln") {

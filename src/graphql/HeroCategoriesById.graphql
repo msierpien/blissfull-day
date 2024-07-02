@@ -1,0 +1,22 @@
+query HeroCategories($id: ID!, $firstSub: Int) {
+  categories(where: {ids: [$id]}, first: 1) {
+    edges {
+      node {
+        name
+        id
+        children(first: $firstSub) {
+          edges {
+            node {
+              name
+              backgroundImage {
+                url
+              }
+              id
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -12,7 +12,7 @@ export default function RootLayout(props: { children: ReactNode }) {
 	return (
 		<>
 			<Header />
-			<div className="flex min-h-[calc(100dvh-64px)] flex-col">
+			<div className="flex min-h-[calc(100dvh-64px)] flex-col ">
 				<Hero 
 				title="Uwolnij swoją kreatywność" 
 				description=" Zachwyć się prostotą tworzenia niestandardowych zaproszeń i papeterii,
@@ -21,7 +21,7 @@ export default function RootLayout(props: { children: ReactNode }) {
 					image="/image/hero/1-landing-page-banner.jpg"
 					/>
 
-				<main className="flex-1 container mx-auto p-4 border">
+				<main className="flex-1 container mx-auto p-4 ">
 					{props.children}
 				</main>
 				<Footer />

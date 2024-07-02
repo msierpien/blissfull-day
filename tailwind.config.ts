@@ -1,13 +1,9 @@
+
 import type { Config } from "tailwindcss"
 
 const config = {
   darkMode: ["class"],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +14,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        inter: ["var(--font-inter)"],
+        montserrat: ["var(--font-montserrat)"],
+        dosis: ["var(--font-dosis)", ],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -53,6 +54,7 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+   
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
